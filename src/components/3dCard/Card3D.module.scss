@@ -1,0 +1,29 @@
+:root {
+  --card-font-size: 14px;
+}
+
+.cardOutside {
+  font-size: var(--card-font-size);
+  line-height: 2;
+  letter-spacing: 1px;
+  font-family: 'Futura Medium', 'SF Pro Display', Arial, sans-serif;
+  color: #707377;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+
+  > .cardInside {
+    width: 320px;
+    height: 320px;
+    transform-style: preserve-3d;
+    background-color: #00000006;
+
+    > .content {
+      height: 100%;
+      padding: 48px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-content: center;
+    }
+  }
+}

@@ -1,0 +1,100 @@
+/* 通用变量 */
+:root {
+  --outLineBtn-outline-min-width: 96px;
+  --outLineBtn-outline-thickness: 2px;
+  --outLineBtn-outline-duration: 0.3s;
+  --outLineBtn-outline-inout: ease-in-out;
+  --outLineBtn-highlight-color: #42a5f5;
+  --outLineBtn-background-color: #42a5f512;
+  --outLineBtn-normal-color: #909399;
+  --outLineBtn-font-size: 12px;
+  --outLineBtn-padding-tb: 8px;
+  --outLineBtn-padding-lr: 16px;
+}
+
+/* 定义基础样式 */
+.hoverOutlineBtn {
+  font-family: 'Futura Bold', 'SF Pro Display', Arial, sans-serif;
+  position: relative;
+  font-size: var(--outLineBtn-font-size);
+  color: var(--outLineBtn-normal-color);
+  background-color: transparent;
+  display: block;
+  overflow: hidden;
+  -webkit-transition: background-color var(--outLineBtn-outline-duration)
+    var(--outLineBtn-outline-inout);
+  transition: background-color var(--outLineBtn-outline-duration)
+    var(--outLineBtn-outline-inout);
+}
+
+.hoverOutlineBtn > span {
+  display: block;
+  line-height: 1;
+  text-align: center;
+  min-width: var(--outLineBtn-outline-min-width);
+  padding: var(--outLineBtn-padding-tb) var(--outLineBtn-padding-lr);
+  -webkit-transition: color var(--outLineBtn-outline-duration)
+    var(--outLineBtn-outline-inout);
+  transition: color var(--outLineBtn-outline-duration)
+    var(--outLineBtn-outline-inout);
+}
+
+/* 定义边框通用属性 */
+.hoverOutlineBtn::after,
+.hoverOutlineBtn::before,
+.hoverOutlineBtn > span::after,
+.hoverOutlineBtn > span::before {
+  content: '';
+  background-color: var(--outLineBtn-highlight-color);
+  display: block;
+  position: absolute;
+  -webkit-transition: height var(--outLineBtn-outline-duration)
+      var(--outLineBtn-outline-inout),
+    width var(--outLineBtn-outline-duration) var(--outLineBtn-outline-inout);
+  transition: height var(--outLineBtn-outline-duration)
+      var(--outLineBtn-outline-inout),
+    width var(--outLineBtn-outline-duration) var(--outLineBtn-outline-inout);
+}
+
+/* 定义边框位置 */
+.hoverOutlineBtn::after,
+.hoverOutlineBtn::before {
+  left: 0;
+  bottom: 0;
+}
+
+.hoverOutlineBtn > span::after,
+.hoverOutlineBtn > span::before {
+  right: 0;
+  top: 0;
+}
+
+/* 定义边框大小 */
+.hoverOutlineBtn::after,
+.hoverOutlineBtn > span::after {
+  width: var(--outLineBtn-outline-thickness);
+  height: 0;
+}
+
+.hoverOutlineBtn::before,
+.hoverOutlineBtn > span::before {
+  height: var(--outLineBtn-outline-thickness);
+  width: 0;
+}
+
+/* 字体 hover 变化颜色 */
+.hoverOutlineBtn:hover {
+  color: var(--outLineBtn-highlight-color);
+  background: var(--outLineBtn-background-color);
+}
+
+/* 边框 hover 属性变化 */
+.hoverOutlineBtn:hover::after,
+.hoverOutlineBtn:hover > span::after {
+  height: 100%;
+}
+
+.hoverOutlineBtn:hover::before,
+.hoverOutlineBtn:hover > span::before {
+  width: 100%;
+}
